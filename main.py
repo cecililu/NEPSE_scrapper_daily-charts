@@ -5,7 +5,7 @@ import pandas
 url="http://www.nepalstock.com/main/todays_price/index/"
 #gettin the html
 final_list=[]
-for i in range(1,16):
+for i in range(1,12):
     instance_url=url+str(i)
     response=requests.get(instance_url)
     html=response.content
@@ -31,5 +31,5 @@ for i in range(1,16):
         newd['Prev closing']=i.contents[17].string
         newd['difference']=float(i.contents[11].string)-float(i.contents[17].string)
         alist.append(newd)
-  final_list= final_list+ alist
+    final_list= final_list+ alist
 print(pandas.DataFrame(final_list))
